@@ -72,7 +72,7 @@ body {
 
 /* Membrete superior estilo etiqueta de alta costura */
 .hero::before {
-  content: "N° 15 — COLLECTION PRIVÉE • 08.08.2026";
+  content: "N° 15 — COLLECCIÓN PRIVADA • 11.12.2026";
   position: absolute;
   top: 0;
   left: 0;
