@@ -1,0 +1,1180 @@
+/* ==========================================================================
+   MAISON SABLE (BEIGE EDITORIAL & ARQUITECTÓNICO) — INVITACIÓN ALMA (inv.css)
+   100% Compatible con invitacion.html y script.js de Mis XV Alma
+   - Paleta Beige Arena (#EAE0D2), Lino (#F4EFE6), Papel Crema (#FAF6F0) y Espresso (#261E18)
+   - Ambos carruseles (.carousel-section vertical y .carousel-horizontal) 100% operativos
+   - Sin fotos torcidas ni carteles sobre la cara
+   - Optimizado para celular (corrige el grid roto de #asistenciaForm y el zoom en iOS)
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Pinyon+Script&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --beige-main: #EAE0D2;       /* Beige arena principal */
+  --beige-soft: #F3EDE2;       /* Lino suave */
+  --beige-card: #FAF6F0;       /* Crema cálido papel */
+  --beige-deep: #D5C4AE;       /* Visón / Arena tostada */
+  --bronze: #9A7B50;           /* Bronce mate */
+  --espresso: #261E18;         /* Café espresso profundo */
+  --moka: #695849;             /* Marrón visón para textos secundarios */
+  --line-dark: rgba(38, 30, 24, 0.16);
+  --form-width: 440px;
+}
+
+@font-face {
+  font-family: 'Allura';
+  src: url('Allura-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Barlow';
+  src: url('Barlow-Regular.ttf') format('truetype');
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', 'Barlow', sans-serif;
+  background-color: var(--beige-main);
+  color: var(--espresso);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   1. PORTADA EDITORIAL BEIGE — FOTO 100% DESPEJADA EN ARCO DE GALERÍA
+   ========================================================================== */
+.foto-portada {
+  position: relative;
+  width: 100%;
+  height: 110vh;
+    height: 110svh;
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 3.2rem 1.1rem 3.8rem;
+  background-color: var(--beige-main);
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Membrete superior estilo revista editorial */
+.foto-portada::before {
+  content: "ÉDICIÓN 2026  •  MILI  •  11.12.2026";
+  position: absolute;
+  top: 12px;
+  left: 1.1rem;
+  right: 1.1rem;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--espresso);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  color: var(--espresso);
+  text-align: center;
+  z-index: 4;
+}
+
+/* Degradé suave solo en la base inferior de la foto para que el nombre se lea perfecto */
+.foto-portada::after {
+  content: "";
+  position: absolute;
+  left: 1.1rem;
+  right: 1.1rem;
+  bottom: 3.8rem;
+  height: 40%;
+  background: linear-gradient(
+    180deg,
+    rgba(38, 30, 24, 0) 0%,
+    rgba(38, 30, 24, 0.52) 70%,
+    rgba(38, 30, 24, 0.82) 100%
+  );
+  z-index: 2;
+  pointer-events: none;
+  border-radius: 0 0 4px 4px;
+}
+
+.foto-portada img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  z-index: 1;
+  border: 1px solid var(--espresso);
+  border-radius: 180px 180px 4px 4px;
+  box-shadow: 8px 8px 0px var(--beige-deep);
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+.foto-portada .hero-desktop {
+  display: block !important;
+}
+
+.foto-portada .hero-mobile {
+  display: none !important;
+}
+
+@media (max-width: 480px) {
+  .foto-portada .hero-desktop {
+    display: none !important;
+  }
+  .foto-portada .hero-mobile {
+    display: block !important;
+  }
+}
+
+/* Nombre ubicado en el tercio inferior para dejar la cara de Alma 100% libre */
+.hero-text {
+  position: absolute;
+  top: auto !important;
+  bottom: 5.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 88%;
+  text-align: center;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.hero-title {
+  display: inline-block;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.42em;
+  color: var(--beige-card);
+  background-color: rgba(38, 30, 24, 0.65);
+  backdrop-filter: blur(4px);
+  padding: 0.35rem 1rem;
+  border: 1px solid rgba(250, 246, 240, 0.45);
+  text-transform: uppercase;
+  text-shadow: none;
+}
+
+.hero-divider {
+  display: none;
+}
+
+.hero-name {
+  display: block;
+  font-family: 'Pinyon Script', 'Allura', cursive;
+  font-size: clamp(3.8rem, 15vw, 5.5rem);
+  line-height: 1;
+  margin-top: 0.25rem;
+  color: #FAF6F0;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
+  opacity: 1;
+  animation: none;
+}
+
+/* ==========================================================================
+   2. CUENTA REGRESIVA — TIRA ARQUITECTÓNICA CONTINUA EN PAPEL CREMA
+   ========================================================================== */
+.countdown-wrapper {
+  position: absolute;
+  bottom: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 2.2rem);
+  max-width: 460px;
+  z-index: 10;
+}
+
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  width: 100%;
+  background-color: var(--beige-card);
+  border: 1px solid var(--espresso);
+  box-shadow: 6px 6px 0px var(--espresso);
+}
+
+.time-box {
+  width: 100% !important;
+  height: 82px !important;
+  background: transparent !important;
+  border: none !important;
+  border-right: 1px solid var(--line-dark) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.time-box:last-child {
+  border-right: none !important;
+}
+
+.time-box::before,
+.time-box::after {
+  display: none !important;
+}
+
+.time-box span {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.1rem !important;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--espresso) !important;
+}
+
+.time-box small {
+  margin-top: 6px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.52rem !important;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--bronze) !important;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   3. BOTÓN DE MÚSICA (SELLO CIRCULAR EN ESPRESSO & CREMA)
+   ========================================================================== */
+.music-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid var(--espresso);
+  background: var(--beige-card);
+  color: var(--espresso);
+  font-size: 17px;
+  cursor: pointer;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 4px 4px 0px var(--espresso);
+  transition: all 0.25s ease;
+}
+
+.music-btn:hover,
+.music-btn:active {
+  background: var(--espresso);
+  color: var(--beige-card);
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px var(--bronze);
+}
+
+.music-btn.paused {
+  opacity: 0.8;
+}
+
+/* ==========================================================================
+   4. FRASES SEPARADORAS — ESTILO CITA EDITORIAL
+   ========================================================================== */
+.frase-separador,
+.frase-oscura {
+  width: 100%;
+  margin: 0 auto;
+  padding: 4.5rem 1.5rem 3rem;
+  background: var(--beige-main) !important;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+
+.linea,
+.linea-oscura {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  color: var(--bronze) !important;
+  font-size: 0.85rem;
+  width: 220px;
+  margin: 1.2rem auto;
+  background: transparent !important;
+}
+
+.linea::before,
+.linea::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--bronze) !important;
+  opacity: 0.55;
+}
+
+.frase-texto,
+.frase-texto-oscura {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(1.3rem, 4.5vw, 1.6rem) !important;
+  font-weight: 400;
+  letter-spacing: 0.02em !important;
+  line-height: 1.55 !important;
+  text-transform: none !important;
+  color: var(--espresso) !important;
+  max-width: 420px;
+  margin: 0 auto 1rem;
+}
+
+.frase-texto span,
+.frase-texto-oscura span {
+  color: var(--bronze) !important;
+  font-weight: 600;
+  font-style: normal;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* ==========================================================================
+   5. BLOQUES DE EVENTO — FICHAS ARQUITECTÓNICAS NUMERADAS (N° 01 - N° 07)
+   ========================================================================== */
+.section-fecha,
+.donde-section,
+.dresscode-section,
+.regalo-section,
+.musica-section,
+.instagram-section,
+.calendario-section {
+  background: var(--beige-main) !important;
+  padding: 1.3rem 1.1rem !important;
+  position: relative;
+}
+
+/* Convertimos cada sección en una Ficha de Atelier con lomo lateral espresso */
+.fecha-contenido,
+.donde-section,
+.dresscode-section,
+.regalo-section,
+.musica-section,
+.instagram-contenido,
+.calendario-contenido {
+  max-width: 460px;
+  margin: 0 auto !important;
+  background-color: var(--beige-card) !important;
+  border: 1px solid var(--espresso) !important;
+  border-left: 6px solid var(--espresso) !important;
+  padding: 2.2rem 1.6rem 2.2rem 1.8rem !important;
+  box-shadow: 7px 7px 0px var(--beige-deep);
+  position: relative;
+  text-align: left !important;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start !important;
+}
+
+/* Como .donde-section, .dresscode-section, .regalo-section y .musica-section son la tarjeta misma,
+   les damos margen superior e inferior para que queden separadas en el celular */
+.donde-section,
+.dresscode-section,
+.regalo-section,
+.musica-section {
+  width: calc(100% - 2.2rem);
+  margin-top: 1.4rem !important;
+  margin-bottom: 1.4rem !important;
+}
+
+/* Adentro de .regalo-section, quitamos bordes duplicados a .regalo-contenido
+   porque en el HTML de Alma el alias y el botón están afuera de .regalo-contenido */
+.regalo-section .regalo-contenido {
+  max-width: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start !important;
+}
+
+/* Numeración editorial en la esquina superior derecha de cada ficha */
+.fecha-contenido::before,
+.donde-section::before,
+.dresscode-section::before,
+.regalo-section::before,
+.musica-section::before,
+.instagram-contenido::before,
+.calendario-contenido::before {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.75rem;
+  font-weight: 300;
+  color: var(--bronze);
+  opacity: 0.55;
+  line-height: 1;
+}
+
+.fecha-contenido::before { content: "N° 01"; }
+.donde-section::before { content: "N° 02"; }
+.dresscode-section::before { content: "N° 03"; }
+.regalo-section::before { content: "N° 04"; }
+.musica-section::before { content: "N° 05"; }
+.instagram-contenido::before { content: "N° 06"; }
+.calendario-contenido::before { content: "N° 07"; }
+
+/* Íconos dentro de un medallón circular beige arena */
+.fecha-icono,
+.regalo-icono,
+.instagram-icono,
+.calendario-icono {
+  margin: 0 0 0.8rem 0 !important;
+}
+
+.fecha-icono img,
+.icono-donde,
+.dresscode-icono,
+.album-icono,
+.regalo-icono img,
+.musica-icono,
+.instagram-icono img,
+.calendario-icono img {
+  width: 52px !important;
+  height: 52px !important;
+  object-fit: contain;
+  margin: 0 0 0.8rem 0 !important;
+  padding: 8px;
+  background-color: var(--beige-main);
+  border: 1px solid var(--bronze);
+  border-radius: 50%;
+  filter: sepia(0.35) contrast(1.05);
+  animation: none !important;
+}
+
+/* Títulos de ficha en Serif Italiana */
+.fecha-titulo,
+.donde-titulo,
+.dresscode-titulo,
+.album-titulo,
+.regalo-titulo,
+.musica-titulo,
+.instagram-titulo,
+.calendario-titulo,
+.asistencia-titulo {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-size: 2.2rem !important;
+  font-weight: 600 !important;
+  font-style: italic;
+  color: var(--espresso) !important;
+  letter-spacing: -0.01em !important;
+  margin: 0.2rem 0 0.75rem 0 !important;
+  text-align: left !important;
+  line-height: 1.1;
+}
+
+.fecha-titulo::after,
+.donde-titulo::after,
+.dresscode-titulo::after,
+.regalo-titulo::after,
+.musica-titulo::after,
+.instagram-titulo::after,
+.calendario-titulo::after {
+  content: "";
+  display: block;
+  width: 48px !important;
+  height: 2px !important;
+  background: var(--bronze) !important;
+  margin: 8px 0 0 0 !important;
+}
+
+/* Párrafos informativos */
+.fecha-texto,
+.donde-info,
+.dresscode-aclaracion,
+.album-texto,
+.regalo-texto,
+.musica-texto,
+.instagram-texto,
+.calendario-texto {
+  font-family: 'Plus Jakarta Sans', 'Barlow', sans-serif !important;
+  font-size: 0.92rem !important;
+  font-weight: 400;
+  letter-spacing: 0.03em !important;
+  line-height: 1.75 !important;
+  color: var(--moka) !important;
+  text-align: left !important;
+  margin: 0 0 1.4rem 0 !important;
+}
+
+.dresscode-tipo {
+  display: inline-block;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 0.72rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.28em !important;
+  color: var(--espresso) !important;
+  background-color: var(--beige-main);
+  border: 1px solid var(--bronze);
+  padding: 0.35rem 0.9rem;
+  margin-bottom: 0.9rem !important;
+  text-transform: uppercase;
+}
+
+.dresscode-linea {
+  display: none !important;
+}
+
+/* Caja destacada para el Alias de Alma (LOMAAL.2025) */
+.alias-label {
+  display: inline-block;
+  width: 100%;
+  padding: 0.85rem 1.2rem;
+  margin: 0.2rem 0 1.2rem 0 !important;
+  background-color: var(--beige-main);
+  border: 1px dashed var(--espresso);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.95rem !important;
+  font-weight: 600;
+  letter-spacing: 0.22em !important;
+  color: var(--espresso) !important;
+  text-align: center;
+}
+
+.alias-copiado {
+  margin-top: 0.75rem !important;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.78rem !important;
+  font-weight: 600;
+  color: var(--bronze) !important;
+}
+
+/* ==========================================================================
+   6. BOTONES — SELLO RECTANGULAR CON SOMBRA DESPLAZADA
+   ========================================================================== */
+.donde-boton,
+.album-boton,
+.regalo-boton,
+.musica-boton,
+.instagram-boton,
+.calendario-boton,
+.asistencia-boton,
+.copiar-alias {
+  display: inline-block;
+  background-color: var(--espresso) !important;
+  color: var(--beige-card) !important;
+  border: 1px solid var(--espresso) !important;
+  border-radius: 0 !important;
+  padding: 0.85rem 1.9rem !important;
+  margin-top: 0.2rem !important;
+  font-family: 'Plus Jakarta Sans', 'Barlow', sans-serif !important;
+  font-size: 0.68rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.25em !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 4px 4px 0px var(--bronze) !important;
+  transition: all 0.2s ease !important;
+}
+
+.donde-boton:hover,
+.album-boton:hover,
+.regalo-boton:hover,
+.musica-boton:hover,
+.instagram-boton:hover,
+.calendario-boton:hover,
+.asistencia-boton:hover,
+.copiar-alias:hover {
+  background-color: var(--bronze) !important;
+  border-color: var(--bronze) !important;
+  color: #FFFFFF !important;
+  transform: translate(2px, 2px) !important;
+  box-shadow: 2px 2px 0px var(--espresso) !important;
+}
+
+/* ==========================================================================
+   7. LOS DOS CARRUSELES DE ALMA (VERTICAL 1-6 Y HORIZONTAL 7-8)
+   Limpios, rectos, enmarcados como galería de arte y 100% funcionales
+   ========================================================================== */
+.carousel-section,
+.carousel-horizontal {
+  background: var(--beige-soft) !important;
+  border-top: 1px solid var(--beige-deep);
+  border-bottom: 1px solid var(--beige-deep);
+  padding: 3rem 1.1rem !important;
+  margin: 1.5rem 0;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Etiqueta superior de galería */
+.carousel-section::before {
+  content: "PORTFOLIO I — PORTRAITS";
+  display: block;
+  max-width: 460px;
+  margin: 0 auto 0.8rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  color: var(--bronze);
+  text-align: left;
+}
+
+.carousel-horizontal::before {
+  content: "PORTFOLIO II — MOMENTS";
+}
+
+/* Forzar visibilidad inmediata para evitar que en celular quede en opacity 0 */
+.carousel-container,
+.carousel-hidden,
+.carousel-visible {
+  max-width: 460px;
+  margin: 0 auto;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+@media (min-width: 769px) {
+  .carousel-section:not(.carousel-horizontal) .carousel-container {
+    max-width: 960px;
+  }
+  .carousel-section::before {
+    max-width: 960px;
+  }
+  .carousel-horizontal::before {
+    max-width: 460px;
+  }
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* En PC el primer carrusel muestra 3 items; en celular muestra 1 item sin margen residual */
+.carousel-item {
+  flex: 0 0 calc(33.333% - 0.8rem);
+  margin-right: 1.2rem;
+  border-radius: 0 !important;
+  background: var(--beige-card);
+  border: 1px solid var(--espresso);
+  padding: 10px 10px 28px 10px;
+  box-shadow: 6px 6px 0px var(--beige-deep);
+}
+
+.carousel-item:last-child {
+  margin-right: 0;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+  border-radius: 0 !important;
+  border: 1px solid var(--line-dark);
+  box-shadow: none !important;
+}
+
+/* Segundo carrusel (horizontal 7.webp y 8.webp): siempre 1 imagen por vez */
+.carousel-horizontal .carousel-item {
+  flex: 0 0 100% !important;
+  margin-right: 0 !important;
+}
+
+.carousel-horizontal .carousel-item img {
+  aspect-ratio: 16 / 10 !important;
+  height: auto !important;
+}
+
+@media (max-width: 768px) {
+  .carousel-item {
+    flex: 0 0 100% !important;
+    margin-right: 0 !important;
+  }
+}
+
+/* Botones de flecha de los carruseles */
+.carousel-btn {
+  position: absolute;
+  top: 46%;
+  transform: translateY(-50%);
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 0 !important;
+  background: var(--beige-card) !important;
+  border: 1px solid var(--espresso) !important;
+  color: var(--espresso) !important;
+  font-size: 1.35rem !important;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 3px 3px 0px var(--espresso) !important;
+  transition: all 0.2s ease;
+}
+
+.carousel-btn:hover {
+  background: var(--espresso) !important;
+  color: var(--beige-card) !important;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.carousel-btn.prev {
+  left: 8px;
+}
+
+.carousel-btn.next {
+  right: 8px;
+}
+
+/* ==========================================================================
+   8. SPOTIFY & INSTAGRAM PREVIEW EN TONOS ARENA
+   ========================================================================== */
+.spotify-preview {
+  width: 100%;
+  max-width: 100%;
+  margin: 0.4rem 0 1.4rem 0 !important;
+  padding: 10px !important;
+  background: var(--beige-main) !important;
+  border: 1px solid var(--bronze) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.spotify-preview iframe {
+  width: 100%;
+  height: 380px;
+  display: block;
+  border: none;
+  border-radius: 4px !important;
+}
+
+.instagram-preview {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 0 1.5rem 0 !important;
+  padding: 1.2rem !important;
+  background: var(--beige-main) !important;
+  border: 1px solid var(--bronze) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  text-align: center;
+}
+
+.ig-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 1px solid var(--espresso);
+  padding: 3px;
+  background: var(--beige-card);
+  margin: 0 auto 0.5rem;
+  display: block;
+  object-fit: cover;
+}
+
+.ig-user {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--espresso) !important;
+  margin-bottom: 0.9rem;
+  text-align: center !important;
+}
+
+.ig-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.ig-grid img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 0 !important;
+  border: 1px solid var(--espresso);
+}
+
+/* ==========================================================================
+   9. FORMULARIO DE ASISTENCIA — 100% REPARADO PARA CELULAR (1 A 7 INVITADOS)
+   ========================================================================== */
+.asistencia-section {
+  background: var(--beige-soft) !important;
+  border-top: 1px solid var(--beige-deep);
+  border-bottom: 1px solid var(--beige-deep);
+  padding: 3.5rem 1.1rem !important;
+  text-align: center;
+  color: var(--espresso) !important;
+}
+
+.asistencia-section .asistencia-titulo {
+  text-align: center !important;
+}
+
+.asistencia-titulo::after {
+  margin: 10px auto 0 !important;
+  background: var(--bronze) !important;
+}
+
+.asistencia-fecha {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: var(--bronze) !important;
+  margin-bottom: 1.6rem;
+  text-transform: uppercase;
+}
+
+.cantidad-wrapper {
+  max-width: 460px;
+  width: 100%;
+  margin: 0 auto 1.2rem;
+  padding: 1.3rem 1.5rem;
+  background: var(--beige-card);
+  border: 1px solid var(--espresso);
+  box-shadow: 5px 5px 0px var(--beige-deep);
+  text-align: left;
+}
+
+.asistencia-card {
+  max-width: 460px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 1.5rem !important;
+  background: var(--beige-card) !important;
+  border: 1px solid var(--espresso) !important;
+  border-radius: 0 !important;
+  box-shadow: 7px 7px 0px var(--beige-deep) !important;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.asistencia-card * {
+  text-align: left;
+}
+
+/* Reemplazo del Grid roto por Flex vertical limpio */
+#asistenciaForm {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1.2rem !important;
+  width: 100%;
+}
+
+#personasContainer,
+#personasExtra {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  width: 100%;
+  margin-top: 0.4rem !important;
+}
+
+.invitado-extra {
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.persona,
+.asistencia-card .persona {
+  background-color: var(--beige-main) !important;
+  border: 1px solid var(--bronze) !important;
+  border-left: 4px solid var(--espresso) !important;
+  border-radius: 0 !important;
+  padding: 1.3rem 1.2rem !important;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem !important;
+  box-shadow: none !important;
+}
+
+.label,
+label[for="cantidadPersonas"] {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 0.66rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.2em !important;
+  text-transform: uppercase !important;
+  color: var(--espresso) !important;
+  margin-bottom: 0.3rem;
+}
+
+input,
+select,
+textarea,
+#cantidadPersonas,
+.cantidad-wrapper select#cantidadPersonas {
+  width: 100%;
+  padding: 0.8rem 0.9rem !important;
+  border-radius: 0 !important;
+  border: 1px solid var(--bronze) !important;
+  background-color: #FFFFFF !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 16px !important; /* Evita zoom automático en iPhone */
+  color: var(--espresso) !important;
+  -webkit-text-fill-color: var(--espresso) !important;
+}
+
+select option {
+  background-color: #FFFFFF;
+  color: var(--espresso);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--espresso) !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--moka) !important;
+  opacity: 0.65;
+}
+
+.radio-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.55rem 0.8rem;
+  background: var(--beige-main);
+  border: 1px solid var(--bronze);
+  border-radius: 0 !important;
+  font-size: 0.85rem !important;
+  color: var(--espresso) !important;
+  cursor: pointer;
+}
+
+input[type="radio"] {
+  width: 18px !important;
+  height: 18px !important;
+  accent-color: var(--espresso);
+}
+
+#contador {
+  color: var(--moka) !important;
+  text-align: right !important;
+}
+
+.asistencia-boton {
+  width: 100%;
+  text-align: center !important;
+  margin-top: 0.5rem;
+}
+
+.mensaje-gracias {
+  margin-top: 1.5rem;
+  padding: 1.8rem 1.5rem;
+  background: var(--beige-main) !important;
+  border: 1px solid var(--espresso) !important;
+  border-radius: 0 !important;
+  text-align: center !important;
+}
+
+.mensaje-titulo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--espresso) !important;
+  text-align: center !important;
+}
+
+.mensaje-texto {
+  color: var(--moka) !important;
+  text-align: center !important;
+}
+
+/* ==========================================================================
+   10. FOTO FINAL — ARCO EDITORIAL Y CIERRE
+   ========================================================================== */
+.foto-espera-section {
+  background: var(--beige-main) !important;
+  padding: 3.5rem 1.2rem 4.5rem;
+  text-align: center;
+}
+
+.foto-espera-contenido {
+  max-width: 420px;
+  margin: 0 auto;
+  background: var(--beige-card);
+  border: 1px solid var(--espresso);
+  padding: 1.5rem 1.5rem 2.5rem;
+  box-shadow: 8px 8px 0px var(--beige-deep);
+}
+
+.foto-espera-img {
+  width: 100%;
+  border-radius: 160px 160px 0 0 !important;
+  border: 1px solid var(--espresso) !important;
+  box-shadow: none !important;
+  margin: 0 auto 1.5rem;
+  display: block;
+}
+
+.foto-espera-icono {
+  width: 54px;
+  margin: 0 auto 0.8rem;
+  filter: sepia(0.35);
+}
+
+.foto-espera-texto {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  color: var(--bronze) !important;
+  text-transform: uppercase;
+}
+
+.foto-espera-texto::after {
+  background: var(--bronze) !important;
+}
+
+.foto-espera-nombre {
+  font-family: 'Pinyon Script', 'Allura', cursive;
+  font-size: 3.4rem;
+  color: var(--espresso) !important;
+  text-shadow: none !important;
+}
+
+/* ==========================================================================
+   11. MODAL DEL MAPA (CON .cerrar-album FUNCIONANDO PERFECTO)
+   ========================================================================== */
+.mapa-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(38, 30, 24, 0.72);
+  backdrop-filter: blur(6px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  padding: 1rem;
+}
+
+.mapa-modal.activo {
+  display: flex;
+}
+
+.mapa-contenido {
+  position: relative;
+  width: 100%;
+  max-width: 540px;
+  height: 68vh;
+  background: var(--beige-card) !important;
+  border: 1px solid var(--espresso) !important;
+  border-radius: 0 !important;
+  padding: 10px;
+  box-shadow: 10px 10px 0px var(--espresso) !important;
+}
+
+.mapa-contenido iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.cerrar-album,
+.mapa-cerrar {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 38px;
+  height: 38px;
+  border-radius: 0 !important;
+  border: 1px solid var(--espresso) !important;
+  background: var(--espresso) !important;
+  cursor: pointer;
+  z-index: 1000000;
+}
+
+.cerrar-album::before,
+.cerrar-album::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 2px;
+  background: var(--beige-card) !important;
+}
+
+.cerrar-album::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.cerrar-album::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* ==========================================================================
+   12. FOOTER EN BEIGE CÁLIDO (PARA QUE LOGO NEGRO Y PIXELARTE SE VEAN NÍTIDOS)
+   ========================================================================== */
+.footer {
+  background: var(--beige-card) !important;
+  padding: 3rem 1.5rem;
+  border-top: 2px solid var(--espresso) !important;
+}
+
+.footer-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  color: var(--bronze) !important;
+}
+
+.footer-bloque + .footer-bloque {
+  margin-top: 1.4rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--line-dark) !important;
+}
+
+.footer-logo {
+  width: 90px;
+  opacity: 0.9;
+}
+
+.footer-icono img {
+  width: 28px;
+  opacity: 0.85;
+}
+
+/* ==========================================================================
+   ANIMACIONES REVEAL ON SCROLL
+   ========================================================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.active,
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.oculto {
+  display: none !important;
+}
